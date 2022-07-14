@@ -6,11 +6,11 @@ import (
 	"os"
 	"testing"
 
-	"github.com/pinyi-lee/core.account.totp.git/internal/app/router"
-	"github.com/pinyi-lee/core.account.totp.git/internal/pkg/config"
-	"github.com/pinyi-lee/core.account.totp.git/internal/pkg/logger"
-	"github.com/pinyi-lee/core.account.totp.git/internal/pkg/mongo"
-	"github.com/pinyi-lee/core.account.totp.git/test/container"
+	"github.com/pinyi-lee/core.account.2fa.git/internal/app/router"
+	"github.com/pinyi-lee/core.account.2fa.git/internal/pkg/config"
+	"github.com/pinyi-lee/core.account.2fa.git/internal/pkg/logger"
+	"github.com/pinyi-lee/core.account.2fa.git/internal/pkg/mongo"
+	"github.com/pinyi-lee/core.account.2fa.git/test/container"
 )
 
 func TestMain(m *testing.M) {

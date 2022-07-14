@@ -2,7 +2,7 @@ package handler
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/pinyi-lee/core.account.totp.git/internal/pkg/logger"
+	"github.com/pinyi-lee/core.account.2fa.git/internal/pkg/logger"
 )
 
 func CORSMiddleware() gin.HandlerFunc {

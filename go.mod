@@ -1,4 +1,4 @@
-module github.com/pinyi-lee/core.account.totp.git
+module github.com/pinyi-lee/core.account.2fa.git
 
 go 1.18
 

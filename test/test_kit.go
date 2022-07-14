@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"net/http/httptest"
 
-	"github.com/pinyi-lee/core.account.totp.git/internal/app/router"
+	"github.com/pinyi-lee/core.account.2fa.git/internal/app/router"
 )
 
 func HttpGet(path string, headers map[string]string) (resp *httptest.ResponseRecorder, err error) {

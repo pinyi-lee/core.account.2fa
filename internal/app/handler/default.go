@@ -5,10 +5,10 @@ import (
 	"net/url"
 
 	"github.com/gin-gonic/gin"
-	"github.com/pinyi-lee/core.account.totp.git/internal/pkg/config"
-	"github.com/pinyi-lee/core.account.totp.git/internal/pkg/logger"
-	"github.com/pinyi-lee/core.account.totp.git/internal/pkg/model"
-	"github.com/pinyi-lee/core.account.totp.git/internal/pkg/util"
+	"github.com/pinyi-lee/core.account.2fa.git/internal/pkg/config"
+	"github.com/pinyi-lee/core.account.2fa.git/internal/pkg/logger"
+	"github.com/pinyi-lee/core.account.2fa.git/internal/pkg/model"
+	"github.com/pinyi-lee/core.account.2fa.git/internal/pkg/util"
 )
 
 // HealthHandler is health checker API

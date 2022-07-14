@@ -2,12 +2,12 @@ package router
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/pinyi-lee/core.account.totp.git/docs"
+	"github.com/pinyi-lee/core.account.2fa.git/docs"
 	swaggerfiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
 
-	"github.com/pinyi-lee/core.account.totp.git/internal/app/handler"
-	"github.com/pinyi-lee/core.account.totp.git/internal/pkg/config"
+	"github.com/pinyi-lee/core.account.2fa.git/internal/app/handler"
+	"github.com/pinyi-lee/core.account.2fa.git/internal/pkg/config"
 )
 
 var Router *gin.Engine

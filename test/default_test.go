@@ -5,7 +5,7 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/pinyi-lee/core.account.totp.git/internal/app/router"
+	"github.com/pinyi-lee/core.account.2fa.git/internal/app/router"
 	"github.com/stretchr/testify/assert"
 )
 
