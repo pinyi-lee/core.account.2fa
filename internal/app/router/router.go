@@ -28,6 +28,12 @@ func SetupRouter() (router *gin.Engine) {
 	router.GET("/health", handler.HealthHandler)
 	router.GET("/version", handler.VersionHandler)
 
+	router.POST("/pviv/2fa/v1/totp/init", handler.InitTotpHandler)
+	router.POST("/pviv/2fa/v1/totp/enable", handler.EnableTotpHandler)
+	router.POST("/pviv/2fa/v1/totp/disable", handler.DisableTotpHandler)
+	router.POST("/pviv/2fa/v1/totp/verify", handler.VerifyTotpHandler)
+	router.GET("pviv/2fa/v1/totp/status", handler.GetTotpStatusHandler)
+
 	return
 }
 
