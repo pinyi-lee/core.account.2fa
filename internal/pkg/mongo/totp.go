@@ -7,6 +7,7 @@ import (
 	"github.com/pinyi-lee/core.account.2fa.git/internal/pkg/util"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
+	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
 var (
@@ -16,7 +17,14 @@ var (
 func (manager *Manager) CreateTotp(totp model.Totp) (err error) {
 	collection := manager.client.Database(manager.databaseName).Collection(collectionTotp)
 
-	_, err = collection.InsertOne(context.TODO(), totp)
+	opts := options.Update().SetUpsert(true)
+	filter := bson.M{
+		"accountId":   totp.AccountId,
+		"serviceName": totp.ServiceName,
+	}
+	update := bson.D{{"$set", totp}}
+
+	_, err = collection.UpdateOne(context.TODO(), filter, update, opts)
 	return err
 }
 

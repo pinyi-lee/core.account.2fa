@@ -44,6 +44,8 @@ type EnvVariable struct {
 	LogLevel          string `env:"LOG_LEVEL" envDefault:"INFO"`
 	DeployEnvironment string `env:"DEPLOY_ENVIRONMENT" envDefault:"DEVELOP"`
 	MongoURI          string `env:"MONGO_URI,required"`
+	ImageWidth        int    `env:"IMAGE_WIDTH" envDefault:"256"`
+	ImageHeight       int    `env:"IMAGE_HEIGHT" envDefault:"256"`
 }
 
 func (env EnvVariable) Validate() (err error) {

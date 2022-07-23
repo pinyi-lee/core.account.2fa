@@ -7,5 +7,5 @@ type InitTotpReq struct {
 
 type InitTotpRes struct {
 	QRCode string `json:"qrCode"`
-	Key    string `json:"key"`
+	Secret string `json:"secret"`
 }
