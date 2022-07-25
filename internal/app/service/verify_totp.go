@@ -28,7 +28,7 @@ func VerifyTotp(req model.VerifyTotpReq) (model.VerifyTotpRes, model.ServiceResp
 		return res, model.ServiceError.StatusConflictError("totp not already created")
 	}
 
-	valid := verify(req.Passcode, totp.Secret)
+	valid := Verify(req.Passcode, totp.Secret)
 	if valid == false {
 		return res, model.ServiceError.BadRequestError("passcode verify fail")
 	}

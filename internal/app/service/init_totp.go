@@ -26,12 +26,12 @@ func InitTotp(req model.InitTotpReq) (model.InitTotpRes, model.ServiceResp) {
 		return res, model.ServiceError.StatusConflictError("totp already created")
 	}
 
-	key, err := generateKey(req.AccountId, req.ServiceName)
+	key, err := GenerateKey(req.AccountId, req.ServiceName)
 	if err != nil {
 		return res, model.ServiceError.InternalServiceError(err.Error())
 	}
 
-	qrCode, err := getQrCode(key)
+	qrCode, err := GetQrCode(key)
 	if err != nil {
 		return res, model.ServiceError.InternalServiceError(err.Error())
 	}

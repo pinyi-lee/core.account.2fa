@@ -28,7 +28,7 @@ func DisableTotp(req model.DisableTotpReq) (model.DisableTotpRes, model.ServiceR
 		return res, model.ServiceError.StatusConflictError("totp not already created")
 	}
 
-	valid := verify(req.Passcode, totp.Secret)
+	valid := Verify(req.Passcode, totp.Secret)
 	if valid == false {
 		return res, model.ServiceError.BadRequestError("passcode verify fail")
 	}
