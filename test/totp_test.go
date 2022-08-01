@@ -102,13 +102,13 @@ func TestEnableTotp(t *testing.T) {
 
 func TestDisableTotp(t *testing.T) {
 	t.Run("[DisableTotp] body error, should return 400", func(t *testing.T) {
-		body := `{"accountId": "","serviceName": "","passcode": ""}`
+		body := `{"accountId": "","serviceName": ""}`
 		w, _ := HttpPost("/pviv/2fa/v1/totp/disable", body, nil)
 		assert.Equal(t, http.StatusBadRequest, w.Code)
 	})
 
 	t.Run("[DisableTotp] data not found, should return 400", func(t *testing.T) {
-		body := `{"accountId": "Disable001","serviceName": "Disable001","passcode": "123456"}`
+		body := `{"accountId": "Disable001","serviceName": "Disable001"}`
 		w, _ := HttpPost("/pviv/2fa/v1/totp/disable", body, nil)
 		assert.Equal(t, http.StatusBadRequest, w.Code)
 	})
@@ -118,27 +118,9 @@ func TestDisableTotp(t *testing.T) {
 		w, _ := HttpPost("/pviv/2fa/v1/totp/init", body, nil)
 		assert.Equal(t, http.StatusOK, w.Code)
 
-		body = `{"accountId": "Disable002","serviceName": "Disable002","passcode": "123456"}`
+		body = `{"accountId": "Disable002","serviceName": "Disable002"}`
 		w, _ = HttpPost("/pviv/2fa/v1/totp/disable", body, nil)
 		assert.Equal(t, http.StatusConflict, w.Code)
-	})
-
-	t.Run("[DisableTotp] passcode verify fail, should return 400", func(t *testing.T) {
-		body := `{"accountId": "Disable003","serviceName": "Disable003"}`
-		w, _ := HttpPost("/pviv/2fa/v1/totp/init", body, nil)
-		assert.Equal(t, http.StatusOK, w.Code)
-		initTotpRes := model.InitTotpRes{}
-		json.Unmarshal([]byte(w.Body.String()), &initTotpRes)
-
-		code, _ := service.GenerateCode(initTotpRes.Secret)
-
-		body = "{\"accountId\": \"Disable003\",\"serviceName\": \"Disable003\",\"passcode\":\"" + code + "\"}"
-		w, _ = HttpPost("/pviv/2fa/v1/totp/enable", body, nil)
-		assert.Equal(t, http.StatusOK, w.Code)
-
-		body = `{"accountId": "Disable003","serviceName": "Disable003","passcode": "123456"}`
-		w, _ = HttpPost("/pviv/2fa/v1/totp/disable", body, nil)
-		assert.Equal(t, http.StatusBadRequest, w.Code)
 	})
 
 	t.Run("[DisableTotp] success, should return 200", func(t *testing.T) {
@@ -154,7 +136,7 @@ func TestDisableTotp(t *testing.T) {
 		w, _ = HttpPost("/pviv/2fa/v1/totp/enable", body, nil)
 		assert.Equal(t, http.StatusOK, w.Code)
 
-		body = "{\"accountId\": \"Disable004\",\"serviceName\": \"Disable004\",\"passcode\":\"" + code + "\"}"
+		body = `{"accountId": "Disable004","serviceName": "Disable004"}`
 		w, _ = HttpPost("/pviv/2fa/v1/totp/disable", body, nil)
 		assert.Equal(t, http.StatusOK, w.Code)
 	})

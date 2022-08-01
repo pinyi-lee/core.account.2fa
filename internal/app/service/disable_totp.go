@@ -28,11 +28,6 @@ func DisableTotp(req model.DisableTotpReq) (model.DisableTotpRes, model.ServiceR
 		return res, model.ServiceError.StatusConflictError("totp not already created")
 	}
 
-	valid := Verify(req.Passcode, totp.Secret)
-	if valid == false {
-		return res, model.ServiceError.BadRequestError("passcode verify fail")
-	}
-
 	err = mongo.GetInstance().DeleteTotp(req.AccountId, req.ServiceName)
 	if err != nil {
 		return res, model.ServiceError.InternalServiceError(err.Error())

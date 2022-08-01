@@ -49,8 +49,8 @@ func RunServer() {
 	}
 }
 
-// @title        Community Service Swagger
-// @description  this service is Community Service
+// @title        2fa Service Swagger
+// @description  this service is 2fa Service
 func main() {
 	Setup()
 	defer Close()
